@@ -135,47 +135,23 @@
   <ellipse cx="90" cy="232" rx="35" ry="7" fill="#90b8e0" opacity="0.2"/>
   <ellipse cx="200" cy="238" rx="25" ry="5" fill="#90b8e0" opacity="0.15"/>
 
-  <!-- 검은 고양이 (인물 왼쪽, 요 위에 앉아서 올려다봄) -->
-  <!-- 고양이 그림자 -->
-  <ellipse cx="68" cy="222" rx="18" ry="5" fill="#1a1a1a" opacity="0.25"/>
-  <!-- 몸통 -->
-  <ellipse cx="68" cy="207" rx="14" ry="16" fill="#1a1a1a"/>
-  <!-- 꼬리 (몸 오른쪽으로 감김) -->
-  <path d="M80,215 Q96,210 98,200 Q100,192 92,190" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
-  <path d="M80,215 Q96,210 98,200 Q100,192 92,190" fill="none" stroke="#2a2a2a" stroke-width="3" stroke-linecap="round"/>
-  <!-- 앞발 -->
-  <ellipse cx="60" cy="221" rx="6" ry="4" fill="#1a1a1a"/>
-  <ellipse cx="76" cy="221" rx="6" ry="4" fill="#1a1a1a"/>
-  <!-- 발가락 선 -->
-  <line x1="57" y1="222" x2="57" y2="225" stroke="#333" stroke-width="1" stroke-linecap="round"/>
-  <line x1="60" y1="223" x2="60" y2="226" stroke="#333" stroke-width="1" stroke-linecap="round"/>
-  <line x1="63" y1="222" x2="63" y2="225" stroke="#333" stroke-width="1" stroke-linecap="round"/>
-  <!-- 머리 -->
-  <circle cx="68" cy="192" r="13" fill="#1a1a1a"/>
-  <!-- 귀 -->
-  <polygon points="57,184 60,172 67,181" fill="#1a1a1a"/>
-  <polygon points="79,184 76,172 69,181" fill="#1a1a1a"/>
-  <!-- 귀 안쪽 -->
-  <polygon points="59,183 61,175 66,181" fill="#3a1a2a" opacity="0.6"/>
-  <polygon points="77,183 75,175 70,181" fill="#3a1a2a" opacity="0.6"/>
-  <!-- 눈 (인물 쪽을 올려다보는 방향) -->
-  <!-- 살짝 오른쪽을 향한 눈 -->
-  <ellipse cx="64" cy="192" rx="4.5" ry="4" fill="#f0c030"/>
-  <ellipse cx="73" cy="192" rx="4.5" ry="4" fill="#f0c030"/>
-  <!-- 동공 (세로로 긴 고양이 눈) -->
-  <ellipse cx="65" cy="192" rx="2" ry="3.5" fill="#111"/>
-  <ellipse cx="74" cy="192" rx="2" ry="3.5" fill="#111"/>
-  <!-- 눈 하이라이트 -->
-  <circle cx="65.5" cy="190.5" r="1" fill="white" opacity="0.8"/>
-  <circle cx="74.5" cy="190.5" r="1" fill="white" opacity="0.8"/>
-  <!-- 코 -->
-  <polygon points="68,197 66,199 70,199" fill="#c06080"/>
-  <!-- 수염 (왼쪽) -->
-  <line x1="55" y1="198" x2="65" y2="199" stroke="#888" stroke-width="0.8" opacity="0.7"/>
-  <line x1="54" y1="201" x2="64" y2="200" stroke="#888" stroke-width="0.8" opacity="0.7"/>
-  <!-- 수염 (오른쪽) -->
-  <line x1="72" y1="199" x2="82" y2="198" stroke="#888" stroke-width="0.8" opacity="0.7"/>
-  <line x1="72" y1="200" x2="82" y2="201" stroke="#888" stroke-width="0.8" opacity="0.7"/>
-  <!-- 입 -->
-  <path d="M66,200 Q68,202 70,200" fill="none" stroke="#c06080" stroke-width="1" stroke-linecap="round"/>
+  <!-- 고양이 (stage3.svg에서 그대로 가져옴, translate로 위치 이동) -->
+  <ellipse cx="68" cy="228" rx="18" ry="5" fill="#6a5a4a" opacity="0.25"/>
+  <g transform="translate(-187, 75)">
+    <ellipse cx="255" cy="145" rx="18" ry="12" fill="#8a7a6a"/>
+    <ellipse cx="255" cy="130" rx="13" ry="12" fill="#8a7a6a"/>
+    <polygon points="245,121 241,112 250,118" fill="#8a7a6a"/>
+    <polygon points="265,121 269,112 260,118" fill="#8a7a6a"/>
+    <polygon points="246,120 243,114 250,118" fill="#c9a0a0"/>
+    <polygon points="264,120 267,114 260,118" fill="#c9a0a0"/>
+    <ellipse cx="250" cy="131" rx="4" ry="4" fill="#3a3020"/>
+    <ellipse cx="260" cy="131" rx="4" ry="4" fill="#3a3020"/>
+    <circle cx="251" cy="130" r="1.5" fill="#ffffff" opacity="0.8"/>
+    <circle cx="261" cy="130" r="1.5" fill="#ffffff" opacity="0.8"/>
+    <line x1="242" y1="136" x2="250" y2="135" stroke="#c8c0b0" stroke-width="0.8"/>
+    <line x1="242" y1="138" x2="250" y2="138" stroke="#c8c0b0" stroke-width="0.8"/>
+    <line x1="260" y1="135" x2="268" y2="136" stroke="#c8c0b0" stroke-width="0.8"/>
+    <line x1="260" y1="138" x2="268" y2="138" stroke="#c8c0b0" stroke-width="0.8"/>
+    <ellipse cx="255" cy="137" rx="2.5" ry="1.5" fill="#d08888"/>
+  </g>
 </svg>
