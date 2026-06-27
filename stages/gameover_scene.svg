@@ -1,123 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
-  <defs>
-    <linearGradient id="go_sea" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1a3a55"/>
-      <stop offset="100%" stop-color="#060e1a"/>
-    </linearGradient>
-    <linearGradient id="go_sky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0a0e1a"/>
-      <stop offset="100%" stop-color="#1a2a3a"/>
-    </linearGradient>
-    <linearGradient id="go_boat" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3a2a18"/>
-      <stop offset="100%" stop-color="#1e1510"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+  <!-- 방 배경 - 낮 시간, 따뜻한 베이지 톤 -->
+  <rect width="320" height="240" fill="#e8d5b0"/>
 
-  <!-- 하늘 -->
-  <rect x="0" y="0" width="200" height="95" fill="url(#go_sky)"/>
+  <!-- 벽 -->
+  <rect x="0" y="0" width="320" height="175" fill="#d4c090"/>
 
-  <!-- 별들 -->
-  <circle cx="15" cy="12" r="0.8" fill="#ffffff" opacity="0.7"/>
-  <circle cx="35" cy="8" r="1" fill="#ffffff" opacity="0.8"/>
-  <circle cx="55" cy="18" r="0.7" fill="#ffffff" opacity="0.6"/>
-  <circle cx="80" cy="6" r="0.9" fill="#ffffff" opacity="0.75"/>
-  <circle cx="105" cy="14" r="0.8" fill="#ffffff" opacity="0.65"/>
-  <circle cx="130" cy="5" r="1" fill="#ffffff" opacity="0.8"/>
-  <circle cx="155" cy="20" r="0.7" fill="#ffffff" opacity="0.7"/>
-  <circle cx="178" cy="10" r="0.9" fill="#ffffff" opacity="0.6"/>
-  <circle cx="190" cy="22" r="0.6" fill="#ffffff" opacity="0.5"/>
-  <circle cx="25" cy="30" r="0.7" fill="#ffffff" opacity="0.5"/>
-  <circle cx="70" cy="28" r="0.8" fill="#ffffff" opacity="0.6"/>
-  <circle cx="145" cy="32" r="0.7" fill="#ffffff" opacity="0.55"/>
-  <circle cx="175" cy="38" r="0.6" fill="#ffffff" opacity="0.5"/>
+  <!-- 벽 몰딩 -->
+  <rect x="0" y="170" width="320" height="5" fill="#c4af80" opacity="0.6"/>
 
-  <!-- 달 -->
-  <circle cx="168" cy="22" r="12" fill="#d4c890"/>
-  <circle cx="173" cy="18" r="10" fill="#1a2030"/>
-  <!-- 달 표면 크레이터 -->
-  <circle cx="163" cy="26" r="2" fill="#c0b878" opacity="0.4"/>
-  <circle cx="160" cy="18" r="1.5" fill="#c0b878" opacity="0.3"/>
+  <!-- 바닥 -->
+  <rect x="0" y="175" width="320" height="65" fill="#c8a878"/>
+  <!-- 바닥 나무결 -->
+  <line x1="0" y1="190" x2="320" y2="190" stroke="#b89060" stroke-width="0.8" opacity="0.4"/>
+  <line x1="0" y1="205" x2="320" y2="205" stroke="#b89060" stroke-width="0.8" opacity="0.4"/>
+  <line x1="0" y1="220" x2="320" y2="220" stroke="#b89060" stroke-width="0.8" opacity="0.4"/>
+  <line x1="80" y1="175" x2="80" y2="240" stroke="#b89060" stroke-width="0.5" opacity="0.3"/>
+  <line x1="160" y1="175" x2="160" y2="240" stroke="#b89060" stroke-width="0.5" opacity="0.3"/>
+  <line x1="240" y1="175" x2="240" y2="240" stroke="#b89060" stroke-width="0.5" opacity="0.3"/>
 
-  <!-- 달빛 반사 (바다) -->
-  <path d="M145 92 Q160 88 175 92 Q165 96 150 96 Z" fill="#d4c890" opacity="0.15"/>
-  <path d="M148 98 Q160 95 172 98 Q165 101 152 101 Z" fill="#d4c890" opacity="0.1"/>
+  <!-- 창문 (벽에 햇빛) -->
+  <rect x="210" y="18" width="85" height="90" fill="#b8d4f0" rx="4"/>
+  <rect x="210" y="18" width="85" height="90" fill="none" stroke="#9aaa88" stroke-width="3" rx="4"/>
+  <!-- 창문 십자 -->
+  <line x1="252" y1="18" x2="252" y2="108" stroke="#9aaa88" stroke-width="2.5"/>
+  <line x1="210" y1="63" x2="295" y2="63" stroke="#9aaa88" stroke-width="2.5"/>
+  <!-- 햇빛 -->
+  <ellipse cx="230" cy="42" rx="16" ry="16" fill="#ffe87a" opacity="0.7"/>
+  <!-- 창문 햇살이 바닥에 드리우는 효과 -->
+  <polygon points="210,108 295,108 310,175 195,175" fill="#ffe87a" opacity="0.12"/>
 
-  <!-- 바다 -->
-  <rect x="0" y="88" width="200" height="72" fill="url(#go_sea)"/>
-  <!-- 바다 물결 -->
-  <path d="M0 88 Q25 84 50 88 Q75 92 100 87 Q125 82 150 87 Q175 92 200 86" fill="none" stroke="#2a5a7a" stroke-width="1.5" opacity="0.7"/>
-  <path d="M0 96 Q30 92 60 97 Q90 102 120 95 Q150 88 180 94 Q190 97 200 93" fill="none" stroke="#1a4a6a" stroke-width="1" opacity="0.5"/>
-  <path d="M0 104 Q35 100 70 105 Q105 110 140 102 Q165 96 200 101" fill="none" stroke="#1a3a5a" stroke-width="0.8" opacity="0.4"/>
+  <!-- 작은 화분 (왼쪽 구석) -->
+  <rect x="24" y="142" width="22" height="28" fill="#8b6040" rx="2"/>
+  <rect x="20" y="138" width="30" height="8" fill="#7a5030" rx="2"/>
+  <!-- 화분 식물 -->
+  <ellipse cx="35" cy="130" rx="14" ry="12" fill="#5a8a45"/>
+  <ellipse cx="24" cy="124" rx="10" ry="9" fill="#4a7a35"/>
+  <ellipse cx="46" cy="126" rx="10" ry="9" fill="#4a7a35"/>
+  <ellipse cx="35" cy="118" rx="9" ry="9" fill="#6a9a55"/>
 
-  <!-- 배 -->
-  <path d="M50 95 Q100 88 150 95 L140 118 Q100 122 60 118 Z" fill="url(#go_boat)"/>
-  <path d="M50 95 Q100 88 150 95" fill="none" stroke="#4a3a22" stroke-width="2"/>
-  <!-- 배 측면 목재 결 -->
-  <line x1="70" y1="98" x2="65" y2="115" stroke="#2a1e12" stroke-width="0.8" opacity="0.5"/>
-  <line x1="90" y1="96" x2="87" y2="116" stroke="#2a1e12" stroke-width="0.8" opacity="0.5"/>
-  <line x1="110" y1="95" x2="109" y2="117" stroke="#2a1e12" stroke-width="0.8" opacity="0.5"/>
-  <line x1="130" y1="96" x2="131" y2="116" stroke="#2a1e12" stroke-width="0.8" opacity="0.5"/>
-  <!-- 배 테두리 -->
-  <path d="M60 118 Q100 122 140 118" fill="none" stroke="#4a3a22" stroke-width="1.5"/>
+  <!-- 이불 (바닥에 깔린 요/이불) -->
+  <!-- 이불 본체 -->
+  <ellipse cx="160" cy="210" rx="110" ry="28" fill="#e8c8a0" opacity="0.6"/>
+  <!-- 요 (매트) -->
+  <rect x="55" y="185" width="210" height="50" fill="#f0e0c0" rx="8"/>
+  <rect x="55" y="185" width="210" height="50" fill="none" stroke="#d4c4a0" stroke-width="1.5" rx="8"/>
+  <!-- 요 퀼팅 선 -->
+  <line x1="105" y1="185" x2="105" y2="235" stroke="#d4c4a0" stroke-width="1" opacity="0.5"/>
+  <line x1="160" y1="185" x2="160" y2="235" stroke="#d4c4a0" stroke-width="1" opacity="0.5"/>
+  <line x1="215" y1="185" x2="215" y2="235" stroke="#d4c4a0" stroke-width="1" opacity="0.5"/>
+  <line x1="55" y1="210" x2="265" y2="210" stroke="#d4c4a0" stroke-width="1" opacity="0.5"/>
 
-  <!-- 돛대 -->
-  <line x1="100" y1="95" x2="100" y2="45" stroke="#2a1a10" stroke-width="2.5"/>
-  <!-- 돛 (낡은 느낌) -->
-  <path d="M100 48 L100 82 L130 72 Z" fill="#c8b890" opacity="0.8"/>
-  <path d="M100 48 L100 82 L130 72 Z" fill="none" stroke="#a09070" stroke-width="1"/>
-  <!-- 돛 주름 -->
-  <line x1="100" y1="58" x2="125" y2="68" stroke="#a09070" stroke-width="0.5" opacity="0.5"/>
-  <line x1="100" y1="68" x2="128" y2="71" stroke="#a09070" stroke-width="0.5" opacity="0.4"/>
+  <!-- 걷어진 이불 (구겨진 형태) -->
+  <ellipse cx="230" cy="200" rx="42" ry="22" fill="#c8a8d8"/>
+  <ellipse cx="228" cy="197" rx="40" ry="20" fill="#d4b8e0"/>
+  <!-- 이불 주름 -->
+  <path d="M195,195 Q210,185 230,190 Q248,195 260,188" fill="none" stroke="#c4a8d0" stroke-width="1.5"/>
+  <path d="M200,205 Q218,198 235,204 Q250,210 262,202" fill="none" stroke="#c4a8d0" stroke-width="1.2"/>
 
-  <!-- 잠에서 깬 주인공 (배 위에 앉음) -->
-  <!-- 몸 -->
-  <rect x="72" y="82" width="22" height="18" rx="4" fill="#c89a64"/>
-  <!-- 옷 (잠옷) -->
-  <rect x="72" y="88" width="22" height="12" rx="3" fill="#4a6080"/>
+  <!-- 베개 -->
+  <ellipse cx="100" cy="192" rx="36" ry="14" fill="#f5f0e8"/>
+  <ellipse cx="100" cy="192" rx="36" ry="14" fill="none" stroke="#e0d8cc" stroke-width="1.5"/>
+  <!-- 베개 자국 (머리 눌린 흔적) -->
+  <ellipse cx="104" cy="191" rx="18" ry="9" fill="#e8e0d0" opacity="0.6"/>
+
+  <!-- 인물 (상반신만, 일어나는 중) -->
+  <!-- 몸통 (이불 위에 앉음) -->
+  <ellipse cx="148" cy="196" rx="28" ry="12" fill="#4a7ab5" opacity="0.8"/>
+
+  <!-- 팔 (한쪽은 바닥 짚고) -->
+  <!-- 오른팔 (바닥 짚음) -->
+  <path d="M168,188 Q185,196 188,206" stroke="#f0c090" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- 손 -->
+  <circle cx="188" cy="208" r="6" fill="#f0c090"/>
+
+  <!-- 왼팔 -->
+  <path d="M128,185 Q118,192 120,200" stroke="#f0c090" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <circle cx="120" cy="202" r="5" fill="#f0c090"/>
+
+  <!-- 몸통 상의 (파자마 느낌) -->
+  <path d="M122,188 Q148,178 174,188 L172,200 Q148,192 124,200 Z" fill="#5a8ac8"/>
+  <!-- 상의 줄무늬 -->
+  <line x1="135" y1="180" x2="132" y2="200" stroke="#4a7ab5" stroke-width="2" opacity="0.6"/>
+  <line x1="148" y1="178" x2="148" y2="198" stroke="#4a7ab5" stroke-width="2" opacity="0.6"/>
+  <line x1="161" y1="180" x2="164" y2="200" stroke="#4a7ab5" stroke-width="2" opacity="0.6"/>
+
+  <!-- 목 -->
+  <rect x="142" y="172" width="14" height="12" fill="#f0c090" rx="3"/>
+
   <!-- 머리 -->
-  <ellipse cx="83" cy="78" rx="13" ry="12" fill="#d4a574"/>
-  <!-- 헝클어진 머리카락 -->
-  <path d="M70 73 Q72 64 83 62 Q94 61 96 70" fill="#2a1a0a"/>
-  <path d="M70 73 Q68 68 72 65" fill="#2a1a0a"/>
-  <path d="M96 70 Q98 65 95 62" fill="#2a1a0a"/>
-  <!-- 뜬 눈 (놀람) -->
-  <ellipse cx="78" cy="78" rx="4" ry="4.5" fill="#ffffff"/>
-  <ellipse cx="88" cy="78" rx="4" ry="4.5" fill="#ffffff"/>
-  <ellipse cx="78" cy="79" rx="2.5" ry="2.5" fill="#5a3a1a"/>
-  <ellipse cx="88" cy="79" rx="2.5" ry="2.5" fill="#5a3a1a"/>
-  <circle cx="79" cy="78" r="1" fill="#2a1a0a"/>
-  <circle cx="89" cy="78" r="1" fill="#2a1a0a"/>
-  <!-- 눈 하이라이트 -->
-  <circle cx="80" cy="77" r="0.8" fill="#ffffff"/>
-  <circle cx="90" cy="77" r="0.8" fill="#ffffff"/>
-  <!-- 땀 흘림 -->
-  <path d="M95" y1="72" x2="99" y2="78" fill="none"/>
-  <ellipse cx="97" cy="72" rx="2" ry="3" fill="#88c0d8" opacity="0.7" transform="rotate(20, 97, 72)"/>
-  <!-- 입 (놀람/헉) -->
-  <ellipse cx="83" cy="86" rx="3.5" ry="4" fill="#7a4a28"/>
-  <!-- 손으로 가슴 짚음 -->
-  <path d="M72 90 Q65 87 62 92" fill="none" stroke="#c89a64" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="60" cy="93" rx="5" ry="4" fill="#c89a64"/>
+  <circle cx="149" cy="162" r="22" fill="#f0c090"/>
 
-  <!-- 고양이 (배 앞부분에 앉아서 주인공 바라봄) -->
-  <ellipse cx="128" cy="97" rx="12" ry="9" fill="#8a7a6a"/>
-  <ellipse cx="128" cy="86" rx="10" ry="9" fill="#8a7a6a"/>
-  <polygon points="121,79 118,71 125,77" fill="#8a7a6a"/>
-  <polygon points="135,79 138,71 131,77" fill="#8a7a6a"/>
-  <polygon points="122,78 120,73 125,77" fill="#c9a0a0"/>
-  <polygon points="134,78 136,73 131,77" fill="#c9a0a0"/>
-  <!-- 고양이 눈 (주인공 쳐다봄) -->
-  <ellipse cx="124" cy="87" rx="3.5" ry="3.5" fill="#2a2010"/>
-  <ellipse cx="132" cy="87" rx="3.5" ry="3.5" fill="#2a2010"/>
-  <circle cx="125" cy="86" r="1.5" fill="#ffffff" opacity="0.9"/>
-  <circle cx="133" cy="86" r="1.5" fill="#ffffff" opacity="0.9"/>
-  <!-- 고양이 수염 -->
-  <line x1="116" y1="91" x2="123" y2="90" stroke="#c0b8a8" stroke-width="0.8"/>
-  <line x1="116" y1="93" x2="123" y2="93" stroke="#c0b8a8" stroke-width="0.8"/>
-  <line x1="133" y1="90" x2="140" y2="91" stroke="#c0b8a8" stroke-width="0.8"/>
-  <line x1="133" y1="93" x2="140" y2="93" stroke="#c0b8a8" stroke-width="0.8"/>
-  <ellipse cx="128" cy="93" rx="2" ry="1.5" fill="#d08888"/>
-  <!-- 고양이 꼬리 -->
-  <path d="M138 102 Q148 100 150 108 Q148 114 140 112" fill="none" stroke="#8a7a6a" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- 헝클어진 머리카락 (막 일어난 느낌) -->
+  <path d="M130,150 Q128,138 135,132 Q140,126 149,128 Q158,126 163,132 Q170,138 168,148" fill="#3a2510" stroke="none"/>
+  <!-- 삐친 머리카락들 -->
+  <path d="M130,148 Q124,138 128,130 Q126,126 122,130" fill="none" stroke="#3a2510" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M134,142 Q128,132 132,124" fill="none" stroke="#3a2510" stroke-width="3" stroke-linecap="round"/>
+  <path d="M168,145 Q174,135 170,127" fill="none" stroke="#3a2510" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M155,140 Q158,130 162,126 Q166,122 164,118" fill="none" stroke="#3a2510" stroke-width="3" stroke-linecap="round"/>
+  <!-- 앞머리 삐침 -->
+  <path d="M140,140 Q136,128 140,122" fill="none" stroke="#3a2510" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- 눈 (막 뜬 눈, 놀란 표정) -->
+  <!-- 왼쪽 눈 -->
+  <ellipse cx="141" cy="160" rx="5" ry="5.5" fill="white"/>
+  <circle cx="141" cy="161" r="3.2" fill="#4a3020"/>
+  <circle cx="142.5" cy="159.5" r="1.2" fill="white"/>
+  <!-- 오른쪽 눈 -->
+  <ellipse cx="157" cy="160" rx="5" ry="5.5" fill="white"/>
+  <circle cx="157" cy="161" r="3.2" fill="#4a3020"/>
+  <circle cx="158.5" cy="159.5" r="1.2" fill="white"/>
+
+  <!-- 눈썹 (놀란 표정) -->
+  <path d="M136,153 Q141,149 146,152" fill="none" stroke="#3a2510" stroke-width="2" stroke-linecap="round"/>
+  <path d="M152,152 Q157,149 162,153" fill="none" stroke="#3a2510" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- 코 -->
+  <ellipse cx="149" cy="166" rx="2.5" ry="1.8" fill="#e0a878"/>
+
+  <!-- 입 (벌어진 입, 놀람) -->
+  <path d="M143,171 Q149,176 155,171" fill="#c06050" stroke="none"/>
+  <ellipse cx="149" cy="172" rx="6" ry="4" fill="#c06050"/>
+  <ellipse cx="149" cy="173" rx="4.5" ry="3" fill="#8a2020"/>
+
+  <!-- 당황 표시 (땀방울) -->
+  <ellipse cx="170" cy="148" rx="4" ry="6" fill="#90c8f0" opacity="0.8"/>
+  <ellipse cx="170" cy="146" rx="2.5" ry="3" fill="#b0d8ff" opacity="0.5"/>
+
+  <!-- 놀람 별표/선 -->
+  <line x1="178" y1="140" x2="186" y2="132" stroke="#f0b030" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="182" y1="142" x2="192" y2="138" stroke="#f0b030" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="180" y1="136" x2="184" y2="126" stroke="#f0b030" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- 물웅덩이 흔적 (악몽의 잔재) - 희미하게 -->
+  <ellipse cx="90" cy="232" rx="35" ry="7" fill="#90b8e0" opacity="0.2"/>
+  <ellipse cx="200" cy="238" rx="25" ry="5" fill="#90b8e0" opacity="0.15"/>
+
+  <!-- 검은 고양이 (인물 왼쪽, 요 위에 앉아서 올려다봄) -->
+  <!-- 고양이 그림자 -->
+  <ellipse cx="68" cy="222" rx="18" ry="5" fill="#1a1a1a" opacity="0.25"/>
+  <!-- 몸통 -->
+  <ellipse cx="68" cy="207" rx="14" ry="16" fill="#1a1a1a"/>
+  <!-- 꼬리 (몸 오른쪽으로 감김) -->
+  <path d="M80,215 Q96,210 98,200 Q100,192 92,190" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M80,215 Q96,210 98,200 Q100,192 92,190" fill="none" stroke="#2a2a2a" stroke-width="3" stroke-linecap="round"/>
+  <!-- 앞발 -->
+  <ellipse cx="60" cy="221" rx="6" ry="4" fill="#1a1a1a"/>
+  <ellipse cx="76" cy="221" rx="6" ry="4" fill="#1a1a1a"/>
+  <!-- 발가락 선 -->
+  <line x1="57" y1="222" x2="57" y2="225" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+  <line x1="60" y1="223" x2="60" y2="226" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+  <line x1="63" y1="222" x2="63" y2="225" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+  <!-- 머리 -->
+  <circle cx="68" cy="192" r="13" fill="#1a1a1a"/>
+  <!-- 귀 -->
+  <polygon points="57,184 60,172 67,181" fill="#1a1a1a"/>
+  <polygon points="79,184 76,172 69,181" fill="#1a1a1a"/>
+  <!-- 귀 안쪽 -->
+  <polygon points="59,183 61,175 66,181" fill="#3a1a2a" opacity="0.6"/>
+  <polygon points="77,183 75,175 70,181" fill="#3a1a2a" opacity="0.6"/>
+  <!-- 눈 (인물 쪽을 올려다보는 방향) -->
+  <!-- 살짝 오른쪽을 향한 눈 -->
+  <ellipse cx="64" cy="192" rx="4.5" ry="4" fill="#f0c030"/>
+  <ellipse cx="73" cy="192" rx="4.5" ry="4" fill="#f0c030"/>
+  <!-- 동공 (세로로 긴 고양이 눈) -->
+  <ellipse cx="65" cy="192" rx="2" ry="3.5" fill="#111"/>
+  <ellipse cx="74" cy="192" rx="2" ry="3.5" fill="#111"/>
+  <!-- 눈 하이라이트 -->
+  <circle cx="65.5" cy="190.5" r="1" fill="white" opacity="0.8"/>
+  <circle cx="74.5" cy="190.5" r="1" fill="white" opacity="0.8"/>
+  <!-- 코 -->
+  <polygon points="68,197 66,199 70,199" fill="#c06080"/>
+  <!-- 수염 (왼쪽) -->
+  <line x1="55" y1="198" x2="65" y2="199" stroke="#888" stroke-width="0.8" opacity="0.7"/>
+  <line x1="54" y1="201" x2="64" y2="200" stroke="#888" stroke-width="0.8" opacity="0.7"/>
+  <!-- 수염 (오른쪽) -->
+  <line x1="72" y1="199" x2="82" y2="198" stroke="#888" stroke-width="0.8" opacity="0.7"/>
+  <line x1="72" y1="200" x2="82" y2="201" stroke="#888" stroke-width="0.8" opacity="0.7"/>
+  <!-- 입 -->
+  <path d="M66,200 Q68,202 70,200" fill="none" stroke="#c06080" stroke-width="1" stroke-linecap="round"/>
 </svg>
