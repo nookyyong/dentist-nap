@@ -51,7 +51,7 @@
   <line x1="55" y1="210" x2="265" y2="210" stroke="#d4c4a0" stroke-width="1" opacity="0.5"/>
 
   <!-- 걷어진 이불 (구겨진 형태) -->
-  <ellipse cx="230" cy="200" rx="42" ry="22" fill="#c8a8d8" rx="10"/>
+  <ellipse cx="230" cy="200" rx="42" ry="22" fill="#c8a8d8"/>
   <ellipse cx="228" cy="197" rx="40" ry="20" fill="#d4b8e0"/>
   <!-- 이불 주름 -->
   <path d="M195,195 Q210,185 230,190 Q248,195 260,188" fill="none" stroke="#c4a8d0" stroke-width="1.5"/>
