@@ -487,6 +487,14 @@ html, body {
   text-align: left;
 }
  
+.start_tip {
+  font-family: var(--font_ui);
+  font-size: 12px;
+  color: rgba(140, 160, 210, 0.5);
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
 .start_btn {
   width: 100%;
   padding: 14px;
