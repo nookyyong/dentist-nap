@@ -1,0 +1,865 @@
+/* =============================================
+   style.css — 고양이 타자 게임
+   ============================================= */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+ 
+/* ─── CSS Variables ─── */
+:root {
+  --color_bg:         #d4c4a0;
+  --color_room_wall:  rgb(215, 190, 155);
+  --color_room_floor: rgb(168, 143, 111);
+  --color_window_bg:  #1e2d4a;
+  --color_window_glow:#3a5a8a;
+  --color_desk:       #2a1f14;
+  --color_lamp_warm:  #f5c842;
+  --color_lamp_glow:  rgba(245, 200, 66, 0.18);
+  --color_accent:     #f5c842;
+  --color_danger:     #ff4d4d;
+  --color_word_base:  #c8d6f0;
+  --color_word_urgent:#ff8c42;
+  --color_word_crit:  #ff4d4d;
+  --color_input_bg:   rgba(20, 28, 46, 0.92);
+  --color_input_border: rgba(245, 200, 66, 0.4);
+  --color_hud_text:   #8899bb;
+  --font_game:        'Space Mono', monospace;
+  --font_ui:          'Noto Sans KR', sans-serif;
+}
+ 
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color_bg);
+  font-family: var(--font_ui);
+}
+ 
+/* ─── Game Wrapper ─── */
+.game_wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+ 
+/* ═══════════════════════════════════════════
+   ROOM BACKGROUND
+═══════════════════════════════════════════ */
+ 
+.room_bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color_room_wall);
+  z-index: 0;
+  filter: brightness(1.0); /* 초기값 — JS updateCatStage()가 덮어씀 */
+  transition: filter 0.8s ease;
+}
+ 
+/* 어두워지는 오버레이 */
+.darkness_overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.02); /* 초기값 — JS updateCatStage()가 덮어씀 */
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.7s ease;
+}
+ 
+/* 창문 */
+.window {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 65px;
+  z-index: 2;
+}
+ 
+.window_pane {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--color_window_bg);
+  border: 3px solid #2a3550;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 30px rgba(58, 90, 138, 0.4),
+    0 0 20px rgba(58, 90, 138, 0.15);
+}
+ 
+.window_cross_h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #2a3550;
+  transform: translateY(-50%);
+}
+ 
+.window_cross_v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #2a3550;
+  transform: translateX(-50%);
+}
+ 
+.window_glow {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(58, 90, 138, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+ 
+/* ─── 씬 이미지 영역 (침대 + 고양이) ─── */
+.scene_area {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.cat_emoji {
+  display: block;
+  font-size: 48px;
+  line-height: 1;
+  transition: font-size 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+ 
+/* ─── 책상과 조명 ─── */
+.desk {
+  position: absolute;
+  right: 6%;
+  bottom: 16%;
+  z-index: 3;
+  width: 140px;
+}
+ 
+.desk_lamp {
+  position: relative;
+  margin-left: 20px;
+}
+ 
+.lamp_head {
+  width: 50px;
+  height: 22px;
+  background: #3a2a1a;
+  border-radius: 4px 4px 0 0;
+  margin-left: 8px;
+  border: 2px solid #4a3828;
+}
+ 
+.lamp_pole {
+  width: 4px;
+  height: 40px;
+  background: #3a2a1a;
+  margin-left: 32px;
+  border-radius: 2px;
+}
+ 
+.lamp_base {
+  width: 36px;
+  height: 8px;
+  background: #3a2a1a;
+  border-radius: 4px;
+  margin-left: 16px;
+}
+ 
+.lamp_glow {
+  position: absolute;
+  top: 16px;
+  left: -10px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(ellipse at top, var(--color_lamp_glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+ 
+.desk_surface {
+  width: 140px;
+  height: 14px;
+  background: var(--color_desk);
+  border-radius: 3px;
+  border-top: 2px solid #3d2d1c;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+ 
+/* ─── 바닥 ─── */
+.floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 17%;
+  background: var(--color_room_floor);
+  border-top: 2px solid #1e2535;
+  z-index: 2;
+}
+ 
+/* ═══════════════════════════════════════════
+   GAME FIELD (단어 떨어지는 영역)
+═══════════════════════════════════════════ */
+ 
+.game_field {
+  position: absolute;
+  inset: 0;
+  bottom: 90px;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+}
+ 
+/* ─── 낙하 단어 ─── */
+.falling_word {
+  position: absolute;
+  top: -40px;
+  font-family: var(--font_game);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color_word_base);
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  background: rgba(15, 22, 40, 0.75);
+  border: 1.5px solid rgba(140, 170, 240, 0.2);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  text-shadow: 0 0 12px rgba(180, 210, 255, 0.3);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  will-change: top;
+  user-select: none;
+}
+ 
+.falling_word.urgent {
+  color: var(--color_word_urgent);
+  border-color: rgba(255, 140, 66, 0.4);
+  text-shadow: 0 0 12px rgba(255, 140, 66, 0.5);
+  box-shadow: 0 0 16px rgba(255, 140, 66, 0.2);
+}
+ 
+.falling_word.critical {
+  color: var(--color_word_crit);
+  border-color: rgba(255, 77, 77, 0.5);
+  text-shadow: 0 0 16px rgba(255, 77, 77, 0.6);
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+  animation: word_pulse 0.5s ease-in-out infinite alternate;
+}
+ 
+@keyframes word_pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.04); }
+}
+ 
+/* 단어 타이핑 중 하이라이트 */
+.falling_word.matched {
+  color: var(--color_accent);
+  border-color: rgba(245, 200, 66, 0.6);
+  text-shadow: 0 0 16px rgba(245, 200, 66, 0.7);
+  box-shadow: 0 0 24px rgba(245, 200, 66, 0.3);
+}
+ 
+/* 단어 타이핑 성공 애니메이션 */
+.falling_word.cleared {
+  animation: word_clear 0.3s ease-out forwards;
+}
+ 
+@keyframes word_clear {
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.8; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.5) translateY(-10px); }
+}
+ 
+/* ═══════════════════════════════════════════
+   HUD
+═══════════════════════════════════════════ */
+ 
+.hud {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  pointer-events: none;
+}
+ 
+.hud_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid rgba(100, 130, 200, 0.2);
+  border-radius: 8px;
+  padding: 8px 20px;
+  backdrop-filter: blur(8px);
+}
+ 
+.hud_label {
+  font-family: var(--font_ui);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color_hud_text);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+ 
+.hud_value {
+  font-family: var(--font_game);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color_accent);
+  line-height: 1;
+}
+ 
+.lives_display {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+ 
+/* ═══════════════════════════════════════════
+   INPUT AREA
+═══════════════════════════════════════════ */
+ 
+.input_area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding: 16px 24px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(8, 12, 22, 0.97) 60%,
+    transparent 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+ 
+.input_wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+ 
+.typing_input {
+  width: 100%;
+  padding: 14px 20px;
+  font-family: var(--font_game);
+  font-size: 18px;
+  font-weight: 400;
+  color: #e8f0ff;
+  background: var(--color_input_bg);
+  border: 2px solid var(--color_input_border);
+  border-radius: 10px;
+  outline: none;
+  caret-color: var(--color_accent);
+  letter-spacing: 1px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow:
+    0 0 0 0 transparent,
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+ 
+.typing_input::placeholder {
+  color: rgba(140, 160, 210, 0.35);
+  font-weight: 400;
+}
+ 
+.typing_input:focus {
+  border-color: rgba(245, 200, 66, 0.7);
+  box-shadow:
+    0 0 0 3px rgba(245, 200, 66, 0.12),
+    0 0 24px rgba(245, 200, 66, 0.08);
+}
+ 
+/* 틀렸을 때 흔들림 효과 */
+.typing_input.wrong {
+  border-color: rgba(255, 77, 77, 0.8) !important;
+  animation: input_shake 0.3s ease;
+}
+ 
+@keyframes input_shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+ 
+/* ═══════════════════════════════════════════
+   START SCREEN
+═══════════════════════════════════════════ */
+ 
+.start_screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 22, 0.85);
+  backdrop-filter: blur(6px);
+}
+ 
+.start_card {
+  background: rgba(18, 24, 42, 0.95);
+  border: 1.5px solid rgba(100, 140, 220, 0.25);
+  border-radius: 20px;
+  padding: 44px 48px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.6),
+    0 0 60px rgba(58, 90, 138, 0.1);
+}
+ 
+.start_cat_icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+  animation: cat_float 2.5s ease-in-out infinite;
+}
+ 
+@keyframes cat_float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+ 
+.start_title {
+  font-family: var(--font_ui);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--color_accent);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+ 
+.start_desc {
+  font-family: var(--font_ui);
+  font-size: 14px;
+  color: rgba(180, 200, 240, 0.7);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+ 
+.start_instructions {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+ 
+.instruction_item {
+  font-family: var(--font_ui);
+  font-size: 13px;
+  color: rgba(160, 185, 230, 0.8);
+  text-align: left;
+}
+ 
+.start_btn {
+  width: 100%;
+  padding: 14px;
+  font-family: var(--font_ui);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0d1117;
+  background: var(--color_accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 4px 20px rgba(245, 200, 66, 0.35);
+}
+ 
+.start_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(245, 200, 66, 0.5);
+}
+ 
+.start_btn:active {
+  transform: translateY(0);
+}
+ 
+/* ═══════════════════════════════════════════
+   GAME OVER SCREEN
+═══════════════════════════════════════════ */
+ 
+.gameover_screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  backdrop-filter: none;
+  animation: fade_in 0.45s ease;
+}
+ 
+.gameover_screen.hidden {
+  display: none;
+}
+ 
+@keyframes fade_in {
+  from { opacity: 0; transform: scale(0.97) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+ 
+.gameover_card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(60, 100, 180, 0.15);
+  border-radius: 20px;
+  padding: 44px 48px;
+  text-align: center;
+  max-width: 340px;
+  width: 90%;
+  box-shadow:
+    0 16px 48px rgba(60, 100, 180, 0.15),
+    0 2px 8px rgba(60, 100, 160, 0.08);
+}
+ 
+.gameover_cat {
+  font-size: 64px;
+  margin-bottom: 12px;
+}
+ 
+.gameover_title {
+  font-family: var(--font_ui);
+  font-size: 28px;
+  font-weight: 900;
+  color: #1a3a6e;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+ 
+.gameover_score,
+.gameover_level {
+  font-family: var(--font_ui);
+  font-size: 15px;
+  color: #4a5a7a;
+  margin-bottom: 8px;
+}
+ 
+.gameover_score span,
+.gameover_level span {
+  font-family: var(--font_game);
+  font-weight: 700;
+  color: #1a3a6e;
+  font-size: 18px;
+}
+ 
+.restart_btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  font-family: var(--font_ui);
+  font-size: 16px;
+  font-weight: 700;
+  color: #e8f0ff;
+  background: #1a3a6e;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 4px 16px rgba(26, 58, 110, 0.35);
+  letter-spacing: 0.3px;
+}
+ 
+.restart_btn:hover {
+  transform: translateY(-2px);
+  background: #254d90;
+  box-shadow: 0 8px 24px rgba(26, 58, 110, 0.45);
+}
+ 
+.title_btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  font-family: var(--font_ui);
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a5a7a;
+  background: transparent;
+  border: 1.5px solid rgba(60, 100, 180, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, color 0.15s;
+  letter-spacing: 0.3px;
+}
+ 
+.title_btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(26, 58, 110, 0.5);
+  color: #1a3a6e;
+}
+ 
+/* ─── 유틸리티 ─── */
+.hidden {
+  display: none !important;
+}
+ 
+/* ─── 반응형 최소 대응 ─── */
+@media (max-width: 480px) {
+  .start_card,
+  .gameover_card {
+    padding: 32px 24px;
+  }
+ 
+  .hud {
+    gap: 12px;
+  }
+ 
+  .hud_item {
+    padding: 6px 12px;
+  }
+ 
+  .hud_value {
+    font-size: 18px;
+  }
+ 
+  .typing_input {
+    font-size: 16px;
+  }
+ 
+  .scene_image_placeholder {
+    width: 260px;
+    height: 150px;
+  }
+}
+ 
+/* ═══════════════════════════════════════════
+   CATEGORY SYSTEM
+═══════════════════════════════════════════ */
+ 
+/* ─── 카테고리 배지 바 (HUD 아래) ─── */
+.category_bar {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  flex-wrap: wrap;
+  padding: 0 16px;
+}
+ 
+.category_badge {
+  font-family: var(--font_ui);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(200, 220, 255, 0.6);
+  letter-spacing: 0.3px;
+  transition: all 0.4s ease;
+}
+ 
+/* ─── 카테고리별 단어 색상 ─── */
+ 
+/* 음식 — 따뜻한 살구/황토 */
+.falling_word.cat_food {
+  color: #f0b97a;
+  border-color: rgba(240, 185, 122, 0.25);
+  text-shadow: 0 0 12px rgba(240, 185, 122, 0.35);
+}
+.falling_word.cat_food.matched {
+  color: #ffd88a;
+  border-color: rgba(255, 216, 138, 0.6);
+  text-shadow: 0 0 16px rgba(255, 216, 138, 0.7);
+  box-shadow: 0 0 24px rgba(255, 216, 138, 0.25);
+}
+ 
+/* 과일 — 산뜻한 핑크/코랄 */
+.falling_word.cat_fruit {
+  color: #f08aad;
+  border-color: rgba(240, 138, 173, 0.25);
+  text-shadow: 0 0 12px rgba(240, 138, 173, 0.35);
+}
+.falling_word.cat_fruit.matched {
+  color: #ffaac8;
+  border-color: rgba(255, 170, 200, 0.6);
+  text-shadow: 0 0 16px rgba(255, 170, 200, 0.7);
+  box-shadow: 0 0 24px rgba(255, 170, 200, 0.25);
+}
+ 
+/* 색깔 — 밝은 라벤더/퍼플 */
+.falling_word.cat_color {
+  color: #b08af0;
+  border-color: rgba(176, 138, 240, 0.25);
+  text-shadow: 0 0 12px rgba(176, 138, 240, 0.35);
+}
+.falling_word.cat_color.matched {
+  color: #caaeff;
+  border-color: rgba(202, 174, 255, 0.6);
+  text-shadow: 0 0 16px rgba(202, 174, 255, 0.7);
+  box-shadow: 0 0 24px rgba(202, 174, 255, 0.25);
+}
+ 
+/* 동물 — 연한 민트/초록 */
+.falling_word.cat_animal {
+  color: #7ad4b0;
+  border-color: rgba(122, 212, 176, 0.25);
+  text-shadow: 0 0 12px rgba(122, 212, 176, 0.35);
+}
+.falling_word.cat_animal.matched {
+  color: #9aefcc;
+  border-color: rgba(154, 239, 204, 0.6);
+  text-shadow: 0 0 16px rgba(154, 239, 204, 0.7);
+  box-shadow: 0 0 24px rgba(154, 239, 204, 0.25);
+}
+ 
+/* 우주 — 차가운 하늘/시안 */
+.falling_word.cat_space {
+  color: #7ac4f0;
+  border-color: rgba(122, 196, 240, 0.25);
+  text-shadow: 0 0 12px rgba(122, 196, 240, 0.35);
+}
+.falling_word.cat_space.matched {
+  color: #9adcff;
+  border-color: rgba(154, 220, 255, 0.6);
+  text-shadow: 0 0 16px rgba(154, 220, 255, 0.7);
+  box-shadow: 0 0 24px rgba(154, 220, 255, 0.25);
+}
+ 
+/* 고양이 — 강렬한 금빛 (기존 accent와 비슷하지만 더 진함) */
+.falling_word.cat_cat {
+  color: #f5c842;
+  border-color: rgba(245, 200, 66, 0.35);
+  text-shadow: 0 0 14px rgba(245, 200, 66, 0.5);
+}
+.falling_word.cat_cat.matched {
+  color: #ffe066;
+  border-color: rgba(255, 224, 102, 0.7);
+  text-shadow: 0 0 20px rgba(255, 224, 102, 0.8);
+  box-shadow: 0 0 28px rgba(255, 224, 102, 0.3);
+}
+ 
+/* urgent / critical은 카테고리 색상을 덮어쓰도록 specificity 높임 */
+.falling_word.urgent {
+  color: var(--color_word_urgent) !important;
+  border-color: rgba(255, 140, 66, 0.4) !important;
+  text-shadow: 0 0 12px rgba(255, 140, 66, 0.5) !important;
+  box-shadow: 0 0 16px rgba(255, 140, 66, 0.2) !important;
+}
+ 
+.falling_word.critical {
+  color: var(--color_word_crit) !important;
+  border-color: rgba(255, 77, 77, 0.5) !important;
+  text-shadow: 0 0 16px rgba(255, 77, 77, 0.6) !important;
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.3) !important;
+}
+ 
+/* ═══════════════════════════════════════════
+   SCENE IMAGE AREA
+═══════════════════════════════════════════ */
+ 
+.scene_area {
+  position: absolute;
+  bottom: 17%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+ 
+/* 실제 이미지 — 기본 숨김, .active 붙으면 표시 */
+.scene_img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;       /* 필요에 따라 조정 */
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  display: block;
+}
+ 
+.scene_img.active {
+  opacity: 1;
+  position: relative; /* active 이미지만 공간 차지 */
+  left: auto;
+  transform: none;
+}
+ 
+/* 이미지 없을 때 이모지 폴백 */
+.scene_fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+ 
+.cat_emoji {
+  display: block;
+  line-height: 1;
+  transition: font-size 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+ 
+/* ═══════════════════════════════════════════
+   GAMEOVER 씬 이미지
+═══════════════════════════════════════════ */
+ 
+.gameover_scene {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+ 
+.gameover_img {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 12px rgba(80, 130, 200, 0.2));
+}
+ 
+.gameover_sub {
+  font-family: var(--font_ui);
+  font-size: 13px;
+  color: #6a7a9a;
+  margin-bottom: 16px;
+  font-style: italic;
+  letter-spacing: 0.3px;
+}

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <radialGradient id="s0_room" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3a2e1e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1a1510" stop-opacity="0.8"/>
+    </radialGradient>
+    <linearGradient id="s0_blanket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a6080"/>
+      <stop offset="100%" stop-color="#2e3e55"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 침대 헤드보드 -->
+  <rect x="30" y="60" width="260" height="18" rx="4" fill="#2a1f14"/>
+  <rect x="35" y="55" width="250" height="12" rx="3" fill="#3a2a18"/>
+
+  <!-- 매트리스 -->
+  <rect x="30" y="78" width="260" height="90" rx="4" fill="#e8dcc8"/>
+  <rect x="30" y="78" width="260" height="8" rx="4" fill="#f0e4d0"/>
+
+  <!-- 베개 -->
+  <rect x="45" y="82" width="75" height="45" rx="8" fill="#f5ede0"/>
+  <rect x="48" y="85" width="69" height="39" rx="6" fill="#faf4ec"/>
+
+  <!-- 이불 -->
+  <path d="M120 88 Q160 85 290 90 L290 168 Q160 165 120 168 Z" fill="url(#s0_blanket)"/>
+  <path d="M120 88 Q160 84 290 89" fill="none" stroke="#5a7090" stroke-width="1.5"/>
+  <!-- 이불 주름 -->
+  <path d="M150 100 Q180 97 220 101" fill="none" stroke="#3a5070" stroke-width="1" opacity="0.5"/>
+  <path d="M160 115 Q200 112 250 116" fill="none" stroke="#3a5070" stroke-width="1" opacity="0.4"/>
+  <path d="M145 132 Q190 129 260 133" fill="none" stroke="#3a5070" stroke-width="1" opacity="0.3"/>
+
+  <!-- 자는 사람 - 얼굴 (옆모습) -->
+  <ellipse cx="82" cy="96" rx="22" ry="18" fill="#d4a574"/>
+  <!-- 머리카락 -->
+  <ellipse cx="82" cy="83" rx="22" ry="12" fill="#2a1a0a"/>
+  <path d="M60 90 Q62 80 82 78 Q95 77 100 85" fill="#2a1a0a"/>
+  <!-- 눈 (감긴) -->
+  <path d="M72 97 Q76 95 80 97" fill="none" stroke="#5a3a1a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 코 -->
+  <path d="M78 102 Q80 104 82 102" fill="none" stroke="#b08050" stroke-width="1" stroke-linecap="round"/>
+  <!-- 입 (살짝 열린, 자는 중) -->
+  <path d="M74 107 Q78 109 82 107" fill="none" stroke="#9a6040" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- 침대 프레임 하단 -->
+  <rect x="30" y="165" width="260" height="10" rx="3" fill="#2a1f14"/>
+  <!-- 침대 다리 -->
+  <rect x="35" y="172" width="10" height="20" rx="2" fill="#1e1510"/>
+  <rect x="275" y="172" width="10" height="20" rx="2" fill="#1e1510"/>
+
+  <!-- 고양이 - 발치에 작게 앉아있음 -->
+  <ellipse cx="255" cy="148" rx="18" ry="14" fill="#8a7a6a"/>
+  <!-- 고양이 머리 -->
+  <ellipse cx="255" cy="132" rx="13" ry="12" fill="#8a7a6a"/>
+  <!-- 귀 -->
+  <polygon points="245,123 241,114 250,120" fill="#8a7a6a"/>
+  <polygon points="265,123 269,114 260,120" fill="#8a7a6a"/>
+  <polygon points="246,122 243,116 250,120" fill="#c9a0a0"/>
+  <polygon points="264,122 267,116 260,120" fill="#c9a0a0"/>
+  <!-- 눈 -->
+  <ellipse cx="250" cy="133" rx="3" ry="2" fill="#2a2a1a"/>
+  <ellipse cx="260" cy="133" rx="3" ry="2" fill="#2a2a1a"/>
+  <!-- 눈동자 빛 -->
+  <circle cx="251" cy="132" r="1" fill="#ffffff" opacity="0.6"/>
+  <circle cx="261" cy="132" r="1" fill="#ffffff" opacity="0.6"/>
+  <!-- 수염 -->
+  <line x1="242" y1="138" x2="250" y2="137" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="242" y1="140" x2="250" y2="140" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="260" y1="137" x2="268" y2="138" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="260" y1="140" x2="268" y2="140" stroke="#c8c0b0" stroke-width="0.8"/>
+  <!-- 코 -->
+  <ellipse cx="255" cy="139" rx="2.5" ry="1.5" fill="#d08888"/>
+
+  <!-- z z z 수면 표시 -->
+  <text x="108" y="85" font-family="serif" font-size="11" fill="#8899bb" opacity="0.7">z</text>
+  <text x="120" y="75" font-family="serif" font-size="14" fill="#8899bb" opacity="0.5">z</text>
+  <text x="135" y="63" font-family="serif" font-size="17" fill="#8899bb" opacity="0.3">z</text>
+</svg>

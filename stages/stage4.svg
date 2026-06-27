@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="s4_water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e2e45" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#040a12" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s4_water_top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a4a65" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0e2e45" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="s4_blur">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+
+  <!-- 침대 헤드보드 (물 위) -->
+  <rect x="30" y="60" width="260" height="18" rx="4" fill="#2a1f14"/>
+  <rect x="35" y="55" width="250" height="12" rx="3" fill="#3a2a18"/>
+
+  <!-- 매트리스 (거의 다 잠김) -->
+  <rect x="30" y="78" width="260" height="90" rx="4" fill="#d8ccb8"/>
+
+  <!-- 베개 (절반 물에 잠김) -->
+  <rect x="45" y="82" width="75" height="45" rx="8" fill="#e8ddd0"/>
+  <rect x="48" y="85" width="69" height="39" rx="6" fill="#f0e8dc"/>
+
+  <!-- 자는 사람 - 얼굴만 보임, 물속에서 흔들리듯 -->
+  <!-- 물 속 몸 (흐릿하게) -->
+  <ellipse cx="82" cy="115" rx="20" ry="12" fill="#c09060" opacity="0.3" filter="url(#s4_blur)"/>
+  <!-- 얼굴 -->
+  <ellipse cx="82" cy="94" rx="22" ry="18" fill="#d4a574"/>
+  <ellipse cx="82" cy="81" rx="22" ry="12" fill="#2a1a0a"/>
+  <path d="M60 88 Q62 78 82 76 Q95 75 100 83" fill="#2a1a0a"/>
+  <!-- 찌푸린 눈썹 -->
+  <path d="M69 91 Q73 88 78 91" fill="none" stroke="#4a2a0a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 감긴 눈 (악몽 중) -->
+  <path d="M71 96 Q76 94 81 96" fill="none" stroke="#5a3a1a" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M77 101 Q79 103 82 101" fill="none" stroke="#b08050" stroke-width="1" stroke-linecap="round"/>
+  <!-- 입 살짝 벌림 (호흡 곤란?) -->
+  <path d="M73 107 Q78 110 83 107" fill="none" stroke="#9a6040" stroke-width="1.4" stroke-linecap="round"/>
+
+  <!-- 이불 끝부분만 수면 위 -->
+  <path d="M45 88 Q90 85 120 88" fill="none" stroke="#3a5070" stroke-width="2"/>
+
+  <!-- 고양이 (이불 끄트머리에 웅크림, 겁먹음) -->
+  <ellipse cx="255" cy="115" rx="16" ry="10" fill="#7a6a5a"/>
+  <ellipse cx="255" cy="100" rx="12" ry="11" fill="#7a6a5a"/>
+  <polygon points="246,91 242,82 251,88" fill="#7a6a5a"/>
+  <polygon points="264,91 268,82 259,88" fill="#7a6a5a"/>
+  <polygon points="247,90 244,84 251,88" fill="#c09898"/>
+  <polygon points="263,90 266,84 259,88" fill="#c09898"/>
+  <!-- 완전히 크게 뜬 눈 (공황) -->
+  <ellipse cx="250" cy="101" rx="4.5" ry="4.5" fill="#1a1a10"/>
+  <ellipse cx="260" cy="101" rx="4.5" ry="4.5" fill="#1a1a10"/>
+  <circle cx="251" cy="100" r="2" fill="#ffffff" opacity="0.9"/>
+  <circle cx="261" cy="100" r="2" fill="#ffffff" opacity="0.9"/>
+  <line x1="242" y1="106" x2="249" y2="105" stroke="#b8b0a0" stroke-width="0.8"/>
+  <line x1="242" y1="108" x2="249" y2="108" stroke="#b8b0a0" stroke-width="0.8"/>
+  <line x1="261" y1="105" x2="268" y2="106" stroke="#b8b0a0" stroke-width="0.8"/>
+  <line x1="261" y1="108" x2="268" y2="108" stroke="#b8b0a0" stroke-width="0.8"/>
+  <ellipse cx="255" cy="107" rx="2" ry="1.5" fill="#d08888"/>
+
+  <!-- 물 (이불 높이까지, 사람 몸통 잠김) -->
+  <path d="M0 120 Q20 114 50 120 Q80 126 110 118 Q140 110 170 117 Q200 124 235 116 Q265 108 300 115 Q310 118 320 113 L320 200 L0 200 Z" fill="url(#s4_water)"/>
+  <!-- 물 표면 상단 레이어 (투명도 있는) -->
+  <path d="M0 118 Q20 112 50 118 Q80 124 110 116 Q140 108 170 115 Q200 122 235 114 Q265 106 300 113 Q310 116 320 111 L320 122 Q265 118 235 126 Q200 134 170 127 Q140 120 110 128 Q80 136 50 130 Q20 124 0 130 Z" fill="url(#s4_water_top)"/>
+  <!-- 물 물결 강화 -->
+  <path d="M10 119 Q50 113 90 119 Q130 125 170 117" fill="none" stroke="#2a7090" stroke-width="1.5" opacity="0.8"/>
+  <path d="M170 117 Q210 109 250 115 Q285 121 320 113" fill="none" stroke="#2a7090" stroke-width="1.5" opacity="0.8"/>
+  <!-- 거품들 -->
+  <circle cx="30" cy="118" r="3" fill="#3a8aaa" opacity="0.5"/>
+  <circle cx="90" cy="116" r="2" fill="#3a8aaa" opacity="0.4"/>
+  <circle cx="160" cy="114" r="2.5" fill="#3a8aaa" opacity="0.45"/>
+  <circle cx="240" cy="112" r="2" fill="#3a8aaa" opacity="0.4"/>
+  <circle cx="300" cy="113" r="3" fill="#3a8aaa" opacity="0.35"/>
+</svg>

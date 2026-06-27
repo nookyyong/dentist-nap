@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="s2_blanket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a6080"/>
+      <stop offset="100%" stop-color="#2e3e55"/>
+    </linearGradient>
+    <linearGradient id="s2_water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a4a6a" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#081e30" stop-opacity="0.98"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 침대 헤드보드 -->
+  <rect x="30" y="60" width="260" height="18" rx="4" fill="#2a1f14"/>
+  <rect x="35" y="55" width="250" height="12" rx="3" fill="#3a2a18"/>
+
+  <!-- 매트리스 -->
+  <rect x="30" y="78" width="260" height="90" rx="4" fill="#e8dcc8"/>
+  <rect x="30" y="78" width="260" height="8" rx="4" fill="#f0e4d0"/>
+
+  <!-- 베개 -->
+  <rect x="45" y="82" width="75" height="45" rx="8" fill="#f5ede0"/>
+  <rect x="48" y="85" width="69" height="39" rx="6" fill="#faf4ec"/>
+
+  <!-- 이불 -->
+  <path d="M120 88 Q160 85 290 90 L290 168 Q160 165 120 168 Z" fill="url(#s2_blanket)"/>
+  <path d="M120 88 Q160 84 290 89" fill="none" stroke="#5a7090" stroke-width="1.5"/>
+
+  <!-- 자는 사람 -->
+  <ellipse cx="82" cy="96" rx="22" ry="18" fill="#d4a574"/>
+  <ellipse cx="82" cy="83" rx="22" ry="12" fill="#2a1a0a"/>
+  <path d="M60 90 Q62 80 82 78 Q95 77 100 85" fill="#2a1a0a"/>
+  <path d="M72 97 Q76 95 80 97" fill="none" stroke="#5a3a1a" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M78 102 Q80 104 82 102" fill="none" stroke="#b08050" stroke-width="1" stroke-linecap="round"/>
+  <path d="M74 107 Q78 109 82 107" fill="none" stroke="#9a6040" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- 침대 프레임 하단 -->
+  <rect x="30" y="165" width="260" height="10" rx="3" fill="#2a1f14"/>
+  <rect x="35" y="172" width="10" height="20" rx="2" fill="#1e1510"/>
+  <rect x="275" y="172" width="10" height="20" rx="2" fill="#1e1510"/>
+
+  <!-- 고양이 (불안해 보임) -->
+  <ellipse cx="255" cy="148" rx="18" ry="14" fill="#8a7a6a"/>
+  <ellipse cx="255" cy="132" rx="13" ry="12" fill="#8a7a6a"/>
+  <polygon points="245,123 241,114 250,120" fill="#8a7a6a"/>
+  <polygon points="265,123 269,114 260,120" fill="#8a7a6a"/>
+  <polygon points="246,122 243,116 250,120" fill="#c9a0a0"/>
+  <polygon points="264,122 267,116 260,120" fill="#c9a0a0"/>
+  <!-- 고양이 눈 - 조금 더 크게 (긴장) -->
+  <ellipse cx="250" cy="133" rx="3.5" ry="3" fill="#2a2a1a"/>
+  <ellipse cx="260" cy="133" rx="3.5" ry="3" fill="#2a2a1a"/>
+  <circle cx="251" cy="132" r="1.2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="261" cy="132" r="1.2" fill="#ffffff" opacity="0.7"/>
+  <line x1="242" y1="138" x2="250" y2="137" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="242" y1="140" x2="250" y2="140" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="260" y1="137" x2="268" y2="138" stroke="#c8c0b0" stroke-width="0.8"/>
+  <line x1="260" y1="140" x2="268" y2="140" stroke="#c8c0b0" stroke-width="0.8"/>
+  <ellipse cx="255" cy="139" rx="2.5" ry="1.5" fill="#d08888"/>
+
+  <!-- 물 (더 높아짐 - 침대 다리 절반 잠김) -->
+  <path d="M0 170 Q30 165 70 170 Q110 175 150 168 Q190 161 230 167 Q270 173 320 165 L320 200 L0 200 Z" fill="url(#s2_water)"/>
+  <!-- 물 표면 물결 -->
+  <path d="M0 170 Q30 165 70 170 Q110 175 150 168" fill="none" stroke="#3a8a9a" stroke-width="1" opacity="0.6"/>
+  <path d="M150 168 Q190 161 230 167 Q270 173 320 165" fill="none" stroke="#3a8a9a" stroke-width="1" opacity="0.6"/>
+  <!-- 물 반짝임 -->
+  <ellipse cx="60" cy="170" rx="15" ry="2" fill="#5aaabc" opacity="0.2"/>
+  <ellipse cx="200" cy="166" rx="20" ry="2" fill="#5aaabc" opacity="0.2"/>
+
+  <!-- z z (점점 약해지는 수면) -->
+  <text x="108" y="85" font-family="serif" font-size="11" fill="#7788aa" opacity="0.5">z</text>
+  <text x="120" y="75" font-family="serif" font-size="14" fill="#7788aa" opacity="0.3">z</text>
+</svg>
