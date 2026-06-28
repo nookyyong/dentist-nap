@@ -43,7 +43,7 @@
   <path d="M77 95 Q79 97 82 95" fill="none" stroke="#a07040" stroke-width="1" stroke-linecap="round"/>
   <!-- 벌어진 입 (숨 막힘) -->
   <path d="M71 101 Q77 105 84 101" fill="none" stroke="#8a5030" stroke-width="1.8" stroke-linecap="round"/>
-
+ 
   <!-- 침대 프레임 하단 -->
   <rect x="30" y="165" width="260" height="10" rx="3" fill="#2a1f14"/>
   <!-- 침대 다리 -->
