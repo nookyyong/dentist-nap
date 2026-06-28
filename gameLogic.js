@@ -143,6 +143,7 @@ const state = {
   lives: 5,
   level: 1,
   activeWords: [],
+  recentWords: [],   // 최근 등장한 단어 히스토리 (최대 10개)
   spawnTimer: null,
   animFrameId: null,
   lastTimestamp: null,
@@ -265,12 +266,17 @@ function spawnWord() {
   if (state.activeWords.length >= cfg.max) return;
 
   const { category, words } = getWeightedWordPool();
-  // 이미 화면에 있는 단어는 제외
+  // 이미 화면에 있는 단어(activeTexts), 최근 나왔던 단어목록(recentSet)은 제외
   const activeTexts = new Set(state.activeWords.map(w => w.word));
-  const available = words.filter(w => !activeTexts.has(w));
+  const recentSet = new Set(state.recentWords);
+  const available = words.filter(w => !activeTexts.has(w) && !recentSet.has(w));
   if (available.length === 0) return;
 
   const word = getRandom(available);
+  // 생성된 단어를 히스토리 배열에 추가, 10개 초과 시 오래된 단어부터 제거
+  state.recentWords.push(word);
+  if (state.recentWords.length > 10) state.recentWords.shift();
+
   const fieldW = gameField.clientWidth;
 
   const el = document.createElement('div');

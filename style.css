@@ -503,6 +503,19 @@ body {
    START SCREEN
 ═══════════════════════════════════════════ */
 
+.start_title_img_wrap {
+  margin: -32px -40px 0;  /* 카드 패딩 상쇄해서 좌우 꽉 채움 */
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.start_title_img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .start_screen {
   position: absolute;
   inset: 0;
@@ -518,9 +531,9 @@ body {
   background: rgba(18, 24, 42, 0.95);
   border: 1.5px solid rgba(100, 140, 220, 0.25);
   border-radius: 20px;
-  padding: 44px 48px;
+  padding: 32px 40px;
   text-align: center;
-  max-width: 380px;
+  max-width: 560px;
   width: 90%;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.6),
@@ -563,8 +576,8 @@ body {
 .start_instructions {
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 28px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -587,7 +600,7 @@ body {
 
 .start_btn {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   font-family: var(--font_ui);
   font-size: 16px;
   font-weight: 700;
