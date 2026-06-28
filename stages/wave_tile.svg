@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="s5_water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a1e30" stop-opacity="0.97"/>
+      <stop offset="100%" stop-color="#020408" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s5_water_glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a5070" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0a2a40" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 물 본체: x=0과 x=320 모두 y=90으로 seamless -->
+  <path d="M0 90 Q80 99 160 90 Q240 81 320 90 L320 200 L0 200 Z" fill="url(#s5_water)"/>
+
+  <!-- 수면 투명 띠 (빛 굴절): 동일 위상, seamless -->
+  <path d="M0 88 Q80 97 160 88 Q240 79 320 88 L320 104 Q240 83 160 92 Q80 101 0 92 Z" fill="url(#s5_water_glow)"/>
+
+  <!-- 물결선 1 (수면 위) -->
+  <path d="M0 90 Q80 99 160 90 Q240 81 320 90" fill="none" stroke="#1a6a80" stroke-width="1.8" opacity="0.9"/>
+
+  <!-- 물결선 2 (살짝 위상 다르게 — 수면 아래 잔물결) -->
+  <path d="M0 97 Q80 106 160 97 Q240 88 320 97" fill="none" stroke="#1a5a70" stroke-width="1" opacity="0.35"/>
+
+  <!-- 거품: x 위치는 160 기준 대칭 → 160+x 쌍으로 배치해서 타일 연속성 유지 -->
+  <circle cx="40"  cy="88" r="3.0" fill="#2a8aaa" opacity="0.50"/>
+  <circle cx="80"  cy="92" r="2.0" fill="#2a8aaa" opacity="0.40"/>
+  <circle cx="120" cy="87" r="2.5" fill="#2a8aaa" opacity="0.45"/>
+  <circle cx="200" cy="79" r="3.0" fill="#2a8aaa" opacity="0.50"/>
+  <circle cx="240" cy="83" r="2.0" fill="#2a8aaa" opacity="0.40"/>
+  <circle cx="280" cy="78" r="2.5" fill="#2a8aaa" opacity="0.45"/>
+  <!-- 타일 경계(x=0/320) 근처 거품: 반반 나눠서 이어지도록 -->
+  <circle cx="5"   cy="90" r="2.0" fill="#2a8aaa" opacity="0.40"/>
+  <circle cx="315" cy="90" r="2.0" fill="#2a8aaa" opacity="0.40"/>
+
+  <!-- 수면 아래 빛 굴절 (주기적 배치) -->
+  <path d="M60  100 Q75 118 65 140" fill="none" stroke="#1a5a70" stroke-width="1" opacity="0.28"/>
+  <path d="M160 100 Q175 118 165 140" fill="none" stroke="#1a5a70" stroke-width="1" opacity="0.22"/>
+  <path d="M260 100 Q275 118 265 140" fill="none" stroke="#1a5a70" stroke-width="1" opacity="0.28"/>
+</svg>
