@@ -249,6 +249,13 @@ function updateCatStage() {
     if (!el) return;
     el.classList.toggle('active', i === imgIdx);
   });
+
+  // 파도 높이: 레벨 1=0px, 레벨 2부터 매 레벨마다 10px씩 증가
+  const ocean = document.querySelector('.ocean');
+  if (ocean) {
+    const oceanHeight = (state.level - 1) * 20;
+    ocean.style.height = `${oceanHeight}px`;
+  }
 }
 
 /* ─── 단어 생성 ─── */
